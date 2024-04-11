@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Повітряна кулька</title>
+  <style>
+    .p {
+      font-size: 20px; 
+      transition: font-size 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <p>🎈</p>
+
+  <script>
+    const balloon = document.querySelector('p');
+
+    document.addEventListener('keydown',(event) => {
+      if (event.key === 'ArrowUp') {
+        let currentSize = parseInt(window.getComputedStyle(balloon).fontSize);
+        let newSize = currentSize * 1.1;
+        balloon.style.fontSize = newSize + 'px';
+
+        if (newSize >= 100) {
+          balloon.textContent = '💥';
+          document.removeEventListener('keydown', handleKeyDown);
+        }
+
+        // } else if (newSize >= 110) {
+        //     location.reload();
+        // }
+
+      } else if (event.key === 'ArrowDown') {
+        let currentSize = parseInt(window.getComputedStyle(balloon).fontSize);
+        let newSize = currentSize * 0.9;
+        balloon.style.fontSize = newSize + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
